@@ -1,0 +1,29 @@
+USING THE DJANGO SHELL
+
+Open the shell with <code>python manage.py shell</code>
+
+Before you can manage database objects, you have to name them:
+  <code>from polls.models import Question, Choice</code>
+where "polls" is the app name, and its database columns are Question and Choice
+
+See all of your Questions with <code>Question.objects.all</code>
+Remember to give the columns each a <code>__str__</code> method for readability
+
+You can also look up an item:
+  <code>Question.objects.filter(id=1)</code>
+
+  <code>Choice.objects.filter(choice_text__startswith="Gozer")</code>
+
+  <code>from django.utils import timezone</code>
+  <code>current_year = timezone.now().year</code>
+  <code>Question.objects.get(pub_date__year=current_year)</code>
+
+Requesting something that doesn't exist raises an exception.
+
+Shortcut for lookup by primary key:
+  <code>Question.objects.get(pk=1)</code>
+
+Add some new Choices to your Questions:
+
+<code>q = Question.objects.get(pk=1)</code>
+<code>q.choice_set.create(choice_text="J. Edgar Hoover", votes=0)</code>
