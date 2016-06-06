@@ -24,6 +24,9 @@ Shortcut for lookup by primary key:
   <code>Question.objects.get(pk=1)</code>
 
 Add some new Choices to your Questions:
+  <code>q = Question.objects.get(pk=1)</code>
+  <code>q.choice_set.create(choice_text="J. Edgar Hoover", votes=0)</code>
 
-<code>q = Question.objects.get(pk=1)</code>
-<code>q.choice_set.create(choice_text="J. Edgar Hoover", votes=0)</code>
+And if you change your mind...
+  <code>c = q.choice_set.filter(choice_text__startswith="J. Edgar")</code>
+  <code>c.delete()</code>
